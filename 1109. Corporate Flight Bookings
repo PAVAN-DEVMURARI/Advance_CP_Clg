@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
+        vector<int> res(n,0);
+
+        int start=0,end=0,seats=0;
+        int len = bookings.size();
+
+        for (int i=0;i<len;i++)
+        {
+            start = bookings[i][0]-1;
+            end = bookings[i][1]-1;
+            seats = bookings[i][2];
+
+            res[start] += seats; 
+
+            if (end<n-1)
+            res[end+1] -= seats;
+
+        }
+
+        for (int i=1;i<n;i++)
+        {
+            res[i] += res[i-1];
+        }
+
+        return res;
+
+
+    }
+};
