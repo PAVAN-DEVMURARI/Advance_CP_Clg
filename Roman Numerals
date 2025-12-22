@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define mod 1000000007
+void solve()
+{
+    vector<pair<int, string>> values = {
+        {1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"},
+        {100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"},
+        {10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"}, {1, "I"}
+    };
+
+    int n;
+    cin >> n;
+
+    string ans = "";
+    for(int i = 0; i < values.size(); i++)
+    {
+        while(n >= values[i].first)
+        {
+            ans += values[i].second;
+            n -= values[i].first;
+        }
+    }
+    cout << ans << endl;
+}
+int main() {
+    ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+// #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("output.txt", "w", stdout);
+// #endif
+
+    ll test=1;
+//cin>>test;
+    while(test--)
+    {
+        solve();
+    }
+    return 0;
+}
