@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define mod 1000000007
+int maxArea(vector<int>& height) {
+        int n = height.size();
+        int i=0,j=n-1;
+        int area = 0;
+        while (i<j)
+        {
+            if (height[i] < height[j])
+            {
+                int local_area = height[i]*(j-i);
+                area = max(area,local_area);
+                i++;
+            }
+            else
+            {
+                int local_area = height[j]*(j-i);
+                area = max(area,local_area);
+                // i++;
+                j--;
+            }
+        }
+        return area;
+    }
+int main() {
+    ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+// #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("output.txt", "w", stdout);
+// #endif
+
+    ll test=1;
+//cin>>test;
+    while(test--)
+    {
+        int n;
+        cin>>n;
+        vector<int> height(n);
+        for (int i = 0; i < n; i++)
+        {
+            cin>>height[i];
+        }
+        cout<<maxArea(height)<<endl;
+    }
+    return 0;
+}
